@@ -72,12 +72,12 @@ backgroundcolor=\color{mygray},
 
 \begin{frame}{Shortcuts}
 \begin{itemize}
-  \item \lstinline|git add -A|\\
+  \item \lstinline|git add -A| \hspace{1cm}(\lstinline|-A| as All)\\
   \emph{Add all the updated/untracked files.}
-  \item \lstinline|git add -u|\\
+  \item \lstinline|git add -u| \hspace{1cm}(\lstinline|-u| as update)\\
   \emph{Add all the updated files but do not add the untracked ones.}
-  \item \lstinline|git commit -a|\\
-  \emph{Equivalent to:} \lstinline|git add -u ; git commit|
+  % \item \lstinline|git commit -a|\\
+  % \emph{Equivalent to:} \lstinline|git add -u ; git commit|
   \item \lstinline|git commit -m "commit message"|
 \end{itemize}
 \end{frame}
@@ -88,7 +88,7 @@ backgroundcolor=\color{mygray},
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%          Presentation
+%          Branches
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Branches}
@@ -127,16 +127,48 @@ In the mean time, the \texttt{Master} branch continue forward (other commits\ldo
 
 
 \begin{frame}{Branches}
-If nothing was done on \texttt{Master} while you were working on \texttt{Future-plans} you can directly merge: \lstinline|git merge|
-
+If nothing was done on \texttt{Master} while you were working on \texttt{Future-plans} you can directly merge:
+\begin{enumerate}
+  \item Switch to the master branch: \lstinline|git checkout master|
+  \item Merge: \lstinline|git merge Future-plans|
+\end{enumerate}
+\vspace{-1cm}
 \includegraphics[width=0.8\textwidth]{img/branches/05.png}
+\end{frame}
+
+\begin{frame}{Branches}
+\vspace{0.2cm}
+If nothing was done on \texttt{Master} while you were working on \texttt{Future-plans} you can directly merge:
+\begin{enumerate}
+  \item Switch to the master branch: \lstinline|git checkout master|
+  \item Merge: \lstinline|git merge Future-plans|
+\end{enumerate}
+\vspace{-0.8cm}
+\hspace{0.07cm}\includegraphics[width=0.8\textwidth]{img/branches/06.png}
+\end{frame}
+
+\begin{frame}{Branches}
+  \centering
+  To delete a branch, you do \lstinline|git branch -D <branch-name>|\\
+  \lstinline|-D| as Delete\\
+  (Not possible while you are on that branch)
 \end{frame}
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%          Merging
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{Merging}
+\includegraphics[width=0.608\textwidth]{img/merge/08.png}
+\end{frame}
 
-
+\begin{frame}{Merging}
+\includegraphics[width=0.8\textwidth]{img/merge/09.png}
+\end{frame}
 
 
 
