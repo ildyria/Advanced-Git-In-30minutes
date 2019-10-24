@@ -2,6 +2,8 @@
 \usetheme[block=fill]{ru}           % Use ru theme
 
 \usepackage{xpatch}
+\usepackage{textcomp}
+\newcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}}
 \usepackage{listings}
 \usepackage{realboxes}
 
@@ -16,7 +18,7 @@ backgroundcolor=\color{mygray},
 \xpretocmd\lstinline{\Colorbox{mygray}\bgroup\appto\lst@DeInit{\egroup}}{}{}
 \makeatother
 
-\title{Advance Use of Git}
+\title{Advanced Use of Git}
 
 \author[Viguier]
 {Beno\^{i}t Viguier}
@@ -37,7 +39,7 @@ backgroundcolor=\color{mygray},
 % -------------------------------------------------------------
 \begin{frame}{Disclaimer}
   \begin{center}
-    \alert{\Large{\textbf{If you don't line command line interface,\\this talk is not for you.}}}
+    \alert{\Large{\textbf{If you don't like command line interface,\\this talk is not for you.}}}
   \end{center}
 \end{frame}
 
@@ -77,7 +79,7 @@ backgroundcolor=\color{mygray},
     \item \lstinline|git add --update| \hspace{1cm}(\lstinline|-u|)\\
     \emph{Add all the updated files but do not add the untracked ones.}
     \item \lstinline|git add --patch| \hspace{1cm}(\lstinline|-p|)\\
-    \emph{Similar to update. Interactively let you decide which modifications in each file you want to save.}
+    \emph{Similar to update. Interactively lets you decide which modifications in each file you want to save.}
     \item \lstinline|git commit -m "commit message"|
   \end{itemize}
 \end{frame}
@@ -132,7 +134,7 @@ backgroundcolor=\color{mygray},
 % -------------------------------------------------------------
 \begin{frame}{Branches}
   Work (modify, commits\ldots) on the \texttt{Future-plans}.\\
-  In the mean time, the \texttt{Master} branch continue forward (other commits\ldots)
+  In the meantime, the \texttt{Master} branch continues forward (other commits\ldots)
   \includegraphics[width=0.8\textwidth]{img/branches/04.png}
 \end{frame}
 
@@ -192,7 +194,7 @@ backgroundcolor=\color{mygray},
 %
 % -------------------------------------------------------------
 \begin{frame}{Merging}
-  \texttt{Master} has changed while you were working on \texttt{Future-plans} the merge process is slightly different.
+  If \texttt{Master} has changed while you were working on \texttt{Future-plans} the merge process is slightly different.
   \begin{enumerate}
     \item Switch to the master branch: \lstinline|git checkout master|
     \item Merge: \lstinline|git merge Future-plans|
@@ -228,7 +230,7 @@ backgroundcolor=\color{mygray},
 % -------------------------------------------------------------
 \begin{frame}{Merging \& Rebasing}
   \texttt{Master} has changed while you were working on \texttt{Feature}.\\
-  You want to make sure your modification do not break \texttt{Master}.\\
+  You want to make sure your modifications do not break \texttt{Master}.\\
   \vspace{0.37cm}
   \includegraphics[width=0.59\textwidth]{img/merge/01.png}
 \end{frame}
@@ -252,7 +254,7 @@ backgroundcolor=\color{mygray},
   Solution 2:
   \begin{enumerate}
     \item Switch to the Feature branch: \lstinline|git checkout Feature|
-    \item Merge: \lstinline|git rebase Master|
+    \item Rebase: \lstinline|git rebase Master|
   \end{enumerate}
   \includegraphics[width=0.8\textwidth]{img/merge/03.png}
   \vspace{-0.06cm}
@@ -301,7 +303,7 @@ backgroundcolor=\color{mygray},
   \end{columns}
 
   \vspace{1cm}
-  The solution is a force push:\\
+  The solution is a force-push:\\
   \lstinline|git push --force origin Feature|
 \end{frame}
 
@@ -393,7 +395,7 @@ totally different content to merge later
   In the case of a \lstinline|rebase|, instead of writting a commit message, just do
   \lstinline|git rebase --continue|.
 
-  In both case, if you are not sure, you can use the \lstinline|--abort| option.
+  In both cases, if you are not sure, you can use the \lstinline|--abort| option.
 \end{frame}
 
 
@@ -410,7 +412,7 @@ totally different content to merge later
 % -------------------------------------------------------------
 \begin{frame}[t]{HEAD \& checkout}
   \vspace{0.5cm}
-  The pointer of the current location in Git is called the \textbf{HEAD}.
+  The pointer to the current location in Git is called the \textbf{HEAD}.
   It can be used as a reference point.
 
   E.g. if you want to go back to a previous commit, you can do either:
@@ -428,7 +430,7 @@ totally different content to merge later
 % -------------------------------------------------------------
 \begin{frame}[t]{HEAD \& checkout}
   \vspace{0.5cm}
-  The pointer of the current location in Git is called the \textbf{HEAD}.
+  The pointer to the current location in Git is called the \textbf{HEAD}.
   It can be used as a reference point.
 
   E.g. if you want to go back to a previous commit, you can do either:
@@ -460,12 +462,12 @@ totally different content to merge later
 % -------------------------------------------------------------
 \begin{frame}{Reverting}
   If you want to undo the last commit: \lstinline|git revert HEAD|\\
-  This will \textbf{create} a new commit which reverts the last changes.
+  This will \textbf{create} a new commit which reverts the lastest changes.
 
   \vspace{0.5cm}
   \includegraphics[width=0.5\textwidth]{img/undoing/02.png}
 
-  If you want to undo the change of an older commit you can also do:
+  If you want to undo changes from an older commit you can also do:
   \lstinline|git revert commit_id| e.g. \lstinline|git revert a1e8bf5| or \lstinline|git revert HEAD~1|
 \end{frame}
 
@@ -488,8 +490,8 @@ totally different content to merge later
 % -------------------------------------------------------------
 \begin{frame}{Reset tricks}
   \begin{itemize}
-    \item \lstinline|git reset --hard HEAD|: remove all the change made from the HEAD\\~\\
-    \item \lstinline|git reset --soft HEAD~4|: go back and forget 4 commits but leave the files as is. Usefull if you want to squash your history.\\~\\
+    \item \lstinline|git reset --hard HEAD|: remove all the changes made from the HEAD\\~\\
+    \item \lstinline|git reset --soft HEAD~4|: go back and forget 4 commits but leave the files as-is. Useful if you want to squash your history.\\~\\
     \item \lstinline|git reset --hard commit_id|: set the repository as it was in \lstinline|commit_id|
   \end{itemize}
 \end{frame}
@@ -504,14 +506,14 @@ totally different content to merge later
 \begin{frame}{Staged files and diff}
   Files have 4 states:
   \begin{itemize}
-    \item Commited
+    \item Committed
     \item Staged
     \item Unstaged
     \item Untracked
   \end{itemize}
-  Staged files are contains changes that are reccorded by Git but not commited yet.
+  Staged files contain changes that are recorded by Git but not committed yet.
 
-  \lstinline|git diff| will show the diff between staged/commited and unstaged files.
+  \lstinline|git diff| will show the diff between staged/committed and unstaged files.
 \end{frame}
 
 % -------------------------------------------------------------
@@ -521,13 +523,13 @@ totally different content to merge later
   \lstinline|git stash| comes with 4 main option:
   \begin{itemize}
     \item \lstinline|push|: (optional) save your local modifications and revert to HEAD.
-    \item \lstinline|pop|: apply the modifications it on top of the current working tree state.
+    \item \lstinline|pop|: apply the modifications on top of the current working tree state.
     \item \lstinline|list|
     \item \lstinline|clear|
   \end{itemize}
 
   \vspace{0.5cm}
-  During a \lstinline|git stash ; git stash pop|, the all moficiations are unstaged.
+  During a \lstinline|git stash ; git stash pop|, all modifications are unstaged.
 \end{frame}
 
 % -------------------------------------------------------------
@@ -584,7 +586,7 @@ totally different content to merge later
     \only<5>{
     Mary rebases on top of John’s commit(s)\\
     \lstinline|git pull --rebase origin master|}
-    \only<6>{Expected new tree (Mary POV).}
+    \only<6>{Expected new tree (Mary's POV).}
     \only<7>{But there is a conflict...}
     \only<8>{\lstinline|git status|}
     \only<9>{Mary edits \texttt{<some-file>}}
@@ -660,7 +662,7 @@ git rebase --continue
     Mary finishes her feature\\
     \lstinline|git push|
   }
-  \only<4>{Bill receives the Pull Request, review and [ask for some change/comment/approve]}
+  \only<4>{Bill receives the Pull Request, reviews and [requests changes/ comments/approves]}
   \only<5>{Mary makes the changes}
   \only<6>{
     Mary publishes her feature\\
@@ -694,26 +696,26 @@ git rebase --continue
       Develop and Master Branches.
       \begin{itemize}
         \item Master branch only contains the minor and major versions.\\
-        $\implies$ e.g. \emph{Debian Stable}
-        \item Develop branch contains all the intermediate moditications.\\
-        $\implies$ e.g. \emph{Debian Unstable}
+        $\implies$ e.g.\,\emph{Debian Stable}
+        \item Develop branch contains all the intermediate modifications.\\
+        $\implies$ e.g.\,\emph{Debian Unstable}
       \end{itemize}
     \end{onlyenv}
     \begin{onlyenv}<2>
       \begin{itemize}
         \item Features are developped as branches of the Develop branch.\\
-        $\implies$ e.g. \emph{Debian Experimental}
+        $\implies$ e.g.\,\emph{Debian Experimental}
       \end{itemize}
     \end{onlyenv}
     \begin{onlyenv}<3>
       \begin{itemize}
         \item A Release branch contains the "frozen" features.\\
-        $\implies$ e.g. \emph{Debian Testing}
+        $\implies$ e.g.\,\emph{Debian Testing}
       \end{itemize}
     \end{onlyenv}
     \begin{onlyenv}<4>
       \begin{itemize}
-        \item if an issue in master is detected a hotfix branch is created from master
+        \item if an issue is detected in master a hotfix branch is created from master
       \end{itemize}
     \end{onlyenv}
   \end{center}
@@ -730,7 +732,7 @@ git rebase --continue
 
 
 \begin{frame}[fragile]{bonus}
-  In your \texttt{~\char`\\.bashrc} or \texttt{~\char`\\.zshrc}:
+  In your \;\texttt{\textapprox/.bashrc} or \;\texttt{\textapprox/.zshrc}:
 
   \texttt{alias gtree='git log --oneline --decorate --all --graph'}
 \end{frame}
