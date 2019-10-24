@@ -39,7 +39,7 @@ open:
 
 clean:
 	@echo $(RED)"Cleaning..."$(DARKGRAY)
-	@rm latex.out 2> /dev/null || true
+	@rm -rf latex.out 2> /dev/null || true
 	@rm $(PNGS) 2> /dev/null || true
 	@rm $(PDFS) 2> /dev/null || true
 
