@@ -23,12 +23,6 @@ BOLD = "\033[1m"
 
 all: $(PDFS)
 
-	# 
-	# cleanpdf:
-	# @rm img/*.png 2> /dev/null || true
-	# @rm *.pdf 2> /dev/null || true
-	# #
-	# # force: cleanpdf $(PDFS)
 %.pdf: %.tex $(PNGS)
 	@echo $(YELLOW)"Building "$@$(DARKGRAY)
 	$(LATEXMK) $<
