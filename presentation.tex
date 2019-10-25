@@ -174,10 +174,10 @@ backgroundcolor=\color{mygray},
   \lstinline|git push origin Future-plans|\\
   \vspace{1cm}
   To delete (\lstinline|-d|) a branch on the online repository:\\
-  \lstinline|git push -d origin Future-plans|\\
+  \lstinline|git push --delete origin Future-plans|\\
   \vspace{1cm}
-  To delete (\lstinline|-D|) locally a branch:\\
-  \lstinline|git branch -D <branch-name>|\\
+  To delete (\lstinline|-d|) a local branch:\\
+  \lstinline|git branch --delete <branch-name>|\\
   (Not possible while you are on that branch.)
 \end{frame}
 
@@ -657,19 +657,19 @@ git rebase --continue
     \lstinline|git commit|
   }
   \only<2>{Mary goes to lunch\\
-  \lstinline|git push -u origin marys-feature|}
+  \lstinline|git push origin marys-feature|}
   \only<3>{
     Mary finishes her feature\\
-    \lstinline|git push|
+    \lstinline|git push origin marys-feature|
   }
   \only<4>{Bill receives the Pull Request, reviews and [requests changes/ comments/approves]}
   \only<5>{Mary makes the changes}
   \only<6>{
     Mary publishes her feature\\
     \lstinline|git checkout master|\\
-    \lstinline|git pull|\\
+    \lstinline|git pull origin master|\\
     \lstinline|git merge marys-feature|\\
-    \lstinline|git push|
+    \lstinline|git push origin master|
   }
 \end{frame}
 
